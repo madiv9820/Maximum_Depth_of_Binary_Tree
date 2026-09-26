@@ -2,7 +2,7 @@
 
 from typing import Optional
 from treenode import TreeNode
-from .approaches import Recursion
+from .approaches import Recursion, Traversal
 
 class Solution:
     """🚀 Select and execute the approach for the tree depth problem."""
@@ -13,5 +13,8 @@ class Solution:
         # 🔄 Use the recursive DFS approach to calculate the deepest path.
         recursion: Recursion = Recursion()
 
+        # 🔄 Initialize the selected iterative DFS approach.
+        traversal: Traversal = Traversal()
+
         # 📏 Return the maximum number of nodes from root to any leaf.
-        return recursion.findMaxDepth(root=root)
+        return traversal.findMaxDepth(root=root)
