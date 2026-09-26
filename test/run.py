@@ -22,10 +22,40 @@ def _to_test_name(title: str) -> str:
     compact     = '_'.join(part for part in sanitized.split('_') if part)
     return f'test_{compact}'
 
-def _create_binary_tree(values: List[int]) -> Optional[TreeNode]:
-    if not values: return None
+def _create_binary_tree(values: List[Optional[int]]) -> Optional[TreeNode]:
+    """🌳 Build a binary tree from its level-order representation."""
 
+    # 🌱 An empty list represents an empty tree.
+    if not values:
+        return None
+
+    # 🏠 Create the root node from the first value.
     root: TreeNode = TreeNode(val=values[0])
+
+    # 🚶 Keep track of nodes whose children are yet to be assigned.
+    queue: List[TreeNode] = [root]
+
+    index: int = 1
+    n: int = len(values)
+
+    while index < n:
+        # 👨‍👦 Get the next parent waiting for its children.
+        parent: TreeNode = queue.pop(0)
+
+        # ◀️ Create the left child when a value exists.
+        if index < n and values[index] is not None:
+            parent.left = TreeNode(val=values[index])
+            queue.append(parent.left)
+
+        index += 1
+
+        # ▶️ Create the right child when a value exists.
+        if index < n and values[index] is not None:
+            parent.right = TreeNode(val=values[index])
+            queue.append(parent.right)
+
+        index += 1
+
     return root
 
 def _make_testcase(testcase):
