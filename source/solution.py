@@ -1,8 +1,17 @@
+"""🌳 Entry point for calculating the maximum depth of a binary tree."""
+
 from typing import Optional
 from treenode import TreeNode
+from .approaches import Recursion
 
-"""🌳 Return the maximum depth of the binary tree."""
 class Solution:
+    """🚀 Select and execute the approach for the tree depth problem."""
+
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        # 🔍 Calculate the number of nodes along the deepest root-to-leaf path.
-        return 0
+        """🔍 Return the maximum depth of the given binary tree."""
+
+        # 🔄 Use the recursive DFS approach to calculate the deepest path.
+        recursion: Recursion = Recursion()
+
+        # 📏 Return the maximum number of nodes from root to any leaf.
+        return recursion.findMaxDepth(root=root)
